@@ -1,26 +1,101 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg-primary: #FAF8F3;
+    --bg-secondary: #FFFEFC;
+    --neutral-soft: #E8E0D4;
+    --text-main: #292724;
+    --text-muted: #8F8578;
+    --accent-champagne: #C8B79C;
+    --accent-sage: #AAB2A1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color: var(--text-main);
+    background-color: var(--bg-primary);
+    font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--accent-champagne);
+    color: #ffffff;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@theme {
+  --color-ivory: #FAF8F3;
+  --color-warm-white: #FFFEFC;
+  --color-sand: #E8E0D4;
+  --color-charcoal: #292724;
+  --color-muted: #8F8578;
+  --color-champagne: #C8B79C;
+  --color-sage: #AAB2A1;
+  
+  --font-serif: var(--font-cormorant), Cormorant Garamond, Georgia, serif;
+  --font-sans: var(--font-inter), Inter, sans-serif;
+}
+
+/* Custom Animation Utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float {
+  animation: floatSlow 3s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 2.5s ease-in-out infinite;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  .animate-fade-in,
+  .animate-float,
+  .animate-pulse-subtle {
+    animation: none !important;
+    transition: none !important;
+  }
 }
