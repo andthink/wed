@@ -108,6 +108,16 @@ export const EnvelopeIntro: React.FC = () => {
       {/* Envelope */}
       <div className="absolute inset-0 flex items-center justify-center pt-[16vh]">
         <div className="intro__stage relative">
+          <div className="intro__back absolute inset-0">
+            <Image
+              src={envelopeBody}
+              alt=""
+              fill
+              priority
+              sizes="(max-width: 728px) 88vw, 640px"
+              className="object-fill"
+            />
+          </div>
           {/* Invitation card (behind the envelope body until it rises) */}
           <div className="intro__card-rise absolute">
             <div

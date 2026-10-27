@@ -141,11 +141,23 @@
   perspective: 1400px;
 }
 
+.intro__back,
 .intro__body,
 .intro__flap {
   transition: opacity 700ms ease-out, transform 900ms var(--intro-ease);
 }
 
+.intro__back {
+  z-index: 1;
+}
+
+.intro__body {
+  /* Follow the side folds and the front pocket's horizontal lip. */
+  clip-path: polygon(0 0, 28% 43%, 70% 43%, 100% 0, 100% 100%, 0 100%);
+}
+
+.intro[data-phase="expanding"] .intro__back,
+.intro[data-phase="leaving"] .intro__back,
 .intro[data-phase="expanding"] .intro__body,
 .intro[data-phase="leaving"] .intro__body {
   opacity: 0;
@@ -217,13 +229,15 @@
   top: 6%;
   bottom: 6%;
   z-index: 10;
+  visibility: hidden;
   transition: transform 1000ms var(--intro-ease);
 }
 
 .intro[data-phase="extracting"] .intro__card-rise,
 .intro[data-phase="expanding"] .intro__card-rise,
 .intro[data-phase="leaving"] .intro__card-rise {
-  transform: translateY(-62%);
+  visibility: visible;
+  transform: translateY(-115%);
 }
 
 .intro[data-phase="expanding"] .intro__card-rise,
@@ -269,6 +283,7 @@
   }
 
   .intro__bg,
+  .intro__back,
   .intro__body,
   .intro__flap,
   .intro__card-rise,
