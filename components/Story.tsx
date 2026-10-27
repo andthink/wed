@@ -18,9 +18,10 @@ export const Story: React.FC = () => {
           <div className="lg:col-span-5 relative">
             <div className="relative aspect-[3/4] w-full rounded-sm overflow-hidden shadow-lg border border-[#E8E0D4]">
               <Image
-                src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=85"
+                src="/images/moher.png"
                 alt="Francesca e Andrea"
                 fill
+                sizes="(max-width: 1023px) calc(100vw - 48px), (max-width: 1327px) calc(41.667vw - 57.333px), 496px"
                 className="object-cover transition-transform duration-700 hover:scale-105"
               />
             </div>

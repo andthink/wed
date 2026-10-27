@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center space-y-8">
         {/* Monogram Logo */}
         <span className="font-serif text-3xl tracking-widest text-[#292724]">
-          A &amp; F
+          F &amp; A
         </span>
 
         {/* Couple & Details */}

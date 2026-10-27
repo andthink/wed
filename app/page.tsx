@@ -1,3 +1,4 @@
+import { EnvelopeIntro } from "@/components/EnvelopeIntro";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Invitation } from "@/components/Invitation";
@@ -18,6 +19,7 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
   return (
     <main className="relative min-h-screen bg-[#FAF8F3]">
+      <EnvelopeIntro />
       <Header />
       <Hero />
       <Invitation />

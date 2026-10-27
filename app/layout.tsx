@@ -16,7 +16,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Francesca & Andrea — 16 maggio 2027",
+  title: "Francesca & Andrea — 20 maggio 2027",
   description:
     "Francesca e Andrea vi invitano a celebrare con loro il giorno del loro matrimonio a Villa Toscanini, Ripalta Guerina.",
   openGraph: {

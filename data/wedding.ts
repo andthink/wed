@@ -23,9 +23,9 @@ export interface TravelInfo {
 export const weddingData = {
   coupleBranding: "Francesca & Andrea",
   coupleProse: "Francesca e Andrea",
-  dateFormatted: "16 maggio 2027",
-  dateShort: "16.05.27",
-  dateNumbers: "16 · 05 · 2027",
+  dateFormatted: "20 maggio 2027",
+  dateShort: "20.05.27",
+  dateNumbers: "20·05·2027",
   locationName: "Villa Toscanini",
   locationRegion: "Ripalta Guerina (CR)",
   locationWebsite: "https://villatoscanini.com/",
@@ -47,12 +47,12 @@ export const weddingData = {
   
   timeline: [
     {
-      year: "2018",
+      year: "2023",
       title: "Il nostro primo incontro",
       description: "Uno sguardo distratto in un pomeriggio di fine primavera e una conversazione durata ore."
     },
     {
-      year: "2020",
+      year: "2024",
       title: "La nostra prima grande avventura",
       description: "Il primo viaggio insieme e la scoperta di una complicità unica e inseparabile."
     },
@@ -72,13 +72,13 @@ export const weddingData = {
   weddingHeading: "Un giorno da vivere insieme",
   ceremony: {
     title: "LA CERIMONIA",
-    time: "Ore 16:00",
+    time: "Ore 17:30",
     venue: "Villa Toscanini",
     location: "Ripalta Guerina (CR)"
   },
   reception: {
     title: "IL RICEVIMENTO",
-    time: "Ore 18:00",
+    time: "Ore 18:30",
     venue: "Villa Toscanini",
     location: "Ripalta Guerina (CR)"
   },

@@ -21,9 +21,9 @@ export const galleryData = {
     },
     {
       id: "gallery-2",
-      src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85",
-      alt: "Coppia elegante in un momento spontaneo",
-      caption: "Un sorriso condiviso nel parco",
+      src: "/images/moher.png",
+      alt: "Una passeggiata a picco sull'oceano",
+      caption: "Una passeggiata a picco sull'oceano",
       category: "portrait",
       aspectRatio: "tall"
     },
