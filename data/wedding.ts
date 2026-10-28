@@ -219,10 +219,14 @@ export const weddingData = {
     messagePlaceholder: `Lascia un pensiero personale a ${coupleProse}...`,
     submitting: "Invio in corso...",
     submit: rsvpCta,
+    notificationWarning:
+      "La risposta è stata salvata, ma non siamo riusciti a inviare la notifica agli sposi. Per sicurezza, contattateli direttamente.",
+    retryNotification: "Riprova a inviare la notifica",
     errors: {
       name: "Inserisci il tuo nome e cognome.",
       email: "Inserisci un indirizzo email valido.",
       attending: "Indica se parteciperai.",
+      submit: "Non siamo riusciti a inviare la risposta. Riprova tra poco.",
     },
   },
 

@@ -38,6 +38,10 @@ export const RSVP: React.FC = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [notificationSent, setNotificationSent] = useState(true);
+  const [submitError, setSubmitError] = useState("");
+  const [submissionId, setSubmissionId] = useState("");
+  const [company, setCompany] = useState("");
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
@@ -60,31 +64,59 @@ export const RSVP: React.FC = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const sendRsvp = async (): Promise<boolean> => {
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const currentSubmissionId = submissionId || crypto.randomUUID();
+      setSubmissionId(currentSubmissionId);
+
+      const response = await fetch("/api/rsvp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          submissionId: currentSubmissionId,
+          company,
+        }),
+      });
+
+      let result: unknown;
+      try {
+        result = await response.json();
+      } catch {
+        result = null;
+      }
+
+      if (
+        !response.ok ||
+        typeof result !== "object" ||
+        result === null ||
+        !("ok" in result) ||
+        result.ok !== true
+      ) {
+        setSubmitError(weddingData.rsvp.errors.submit);
+        return false;
+      }
+
+      setNotificationSent(
+        "notificationSent" in result && result.notificationSent === true,
+      );
+      return true;
+    } catch {
+      setSubmitError(weddingData.rsvp.errors.submit);
+      return false;
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!validate()) return;
-
-    setIsSubmitting(true);
-
-    // Simulate short network loading state
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-
-      // Save submission into localStorage for prototype persistence
-      try {
-        const existingSubmissions = JSON.parse(
-          localStorage.getItem("wedding_rsvp") || "[]"
-        );
-        localStorage.setItem(
-          "wedding_rsvp",
-          JSON.stringify([...existingSubmissions, { ...formData, timestamp: new Date().toISOString() }])
-        );
-      } catch (err) {
-        console.error("Could not save to localStorage", err);
-      }
-    }, 1200);
+    if (await sendRsvp()) setIsSubmitted(true);
   };
 
   return (
@@ -115,6 +147,32 @@ export const RSVP: React.FC = () => {
               &ldquo;{weddingData.finalMessageText}&rdquo;
             </p>
 
+            {!notificationSent && (
+              <div className="max-w-md w-full mb-6">
+                <p
+                  role="alert"
+                  className="text-sm text-red-700 bg-red-50 border border-red-200 p-4"
+                >
+                  {weddingData.rsvp.notificationWarning}
+                </p>
+                {submitError && (
+                  <p role="alert" className="mt-2 text-sm text-red-700">
+                    {submitError}
+                  </p>
+                )}
+                <button
+                  type="button"
+                  onClick={sendRsvp}
+                  disabled={isSubmitting}
+                  className="mt-3 text-xs uppercase tracking-widest text-[#8F8578] hover:text-[#292724] underline underline-offset-4 disabled:opacity-50"
+                >
+                  {isSubmitting
+                    ? weddingData.rsvp.submitting
+                    : weddingData.rsvp.retryNotification}
+                </button>
+              </div>
+            )}
+
             <div className="pt-6 border-t border-[#E8E0D4] w-48 flex flex-col items-center">
               <span className="font-serif text-lg tracking-[0.2em] text-[#292724]">
                 {weddingData.dateNumbers}
@@ -127,6 +185,10 @@ export const RSVP: React.FC = () => {
             <button
               onClick={() => {
                 setIsSubmitted(false);
+                setNotificationSent(true);
+                setSubmissionId("");
+                setSubmitError("");
+                setCompany("");
                 setFormData({
                   name: "",
                   email: "",
@@ -373,8 +435,29 @@ export const RSVP: React.FC = () => {
               </div>
             )}
 
+            <div
+              aria-hidden="true"
+              className="absolute -left-[9999px] h-px w-px overflow-hidden"
+            >
+              <label htmlFor="company">Company</label>
+              <input
+                id="company"
+                name="company"
+                type="text"
+                autoComplete="off"
+                tabIndex={-1}
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+              />
+            </div>
+
             {/* Submit Button */}
             <div className="pt-4">
+              {submitError && (
+                <p role="alert" className="mb-4 text-sm text-red-700">
+                  {submitError}
+                </p>
+              )}
               <Button
                 type="submit"
                 variant="primary"
