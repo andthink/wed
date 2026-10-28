@@ -7,7 +7,6 @@ import { Wedding } from "@/components/Wedding";
 import { Schedule } from "@/components/Schedule";
 import { Location } from "@/components/Location";
 import { Travel } from "@/components/Travel";
-import { Accommodation } from "@/components/Accommodation";
 import { DressCode } from "@/components/DressCode";
 import { RSVP } from "@/components/RSVP";
 import { FAQ } from "@/components/FAQ";
@@ -28,7 +27,6 @@ export default function Home() {
       <Schedule />
       <Location />
       <Travel />
-      <Accommodation />
       <DressCode />
       <RSVP />
       <FAQ />

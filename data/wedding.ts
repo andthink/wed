@@ -10,16 +10,6 @@ export interface ScheduleItem {
   subtitle?: string;
 }
 
-export interface TravelInfo {
-  icon: string;
-  title: string;
-  options: {
-    name: string;
-    detail: string;
-  }[];
-  note?: string;
-}
-
 const brideName = "Francesca";
 const groomName = "Andrea";
 const coupleBranding = `${brideName} & ${groomName}`;
@@ -148,13 +138,13 @@ export const weddingData = {
   scheduleLabel: "IL PROGRAMMA",
   scheduleHeading: "La giornata",
   schedule: [
-    { time: "15:30", title: "Arrivo degli invitati", subtitle: "Benvenuto nei giardini di Villa Toscanini" },
-    { time: "16:00", title: "Cerimonia", subtitle: "Scambio delle promesse" },
-    { time: "17:00", title: "Aperitivo", subtitle: "Cocktail e musica dal vivo nel parco" },
-    { time: "18:30", title: "Cena", subtitle: "Banchetto nuziale nelle sale storiche" },
+    { time: "17:00", title: "Arrivo degli invitati", subtitle: "Benvenuto nei giardini di Villa Toscanini" },
+    { time: "17:30", title: "Cerimonia", subtitle: "Scambio delle promesse" },
+    { time: "18:30", title: "Aperitivo", subtitle: "Cocktail e musica dal vivo nel parco" },
+    { time: "19:30", title: "Cena", subtitle: "Banchetto imperiale sotto i salici" },
+    { time: "21:00", title: "Ludos", subtitle: "Dai il meglio di te per un ricordo" },
     { time: "21:30", title: "Taglio della torta e brindisi", subtitle: "Un momento di gioia insieme" },
-    { time: "22:00", title: "Si balla", subtitle: "DJ set e open bar" },
-    { time: "00:00", title: "Festa fino a tarda notte", subtitle: "Musica e festeggiamenti" }
+    { time: "22:00", title: "Musica Ragazzi", subtitle: "Jazz Rain" }
   ] as ScheduleItem[],
 
   locationLabel: "LA LOCATION",
@@ -166,33 +156,15 @@ export const weddingData = {
 
   travelLabel: "COME ARRIVARE",
   travelHeading: "Tutte le informazioni per raggiungerci",
-  travel: [
-    {
-      icon: "Plane",
-      title: "IN AEREO",
-      options: [
-        { name: "Milano Linate (LIN)", detail: "Circa 45 minuti di auto" },
-        { name: "Milano Bergamo Orio al Serio (BGY)", detail: "Circa 50 minuti di auto" },
-        { name: "Milano Malpensa (MXP)", detail: "Circa 1 ora e 15 minuti di auto" }
-      ]
-    },
-    {
-      icon: "Car",
-      title: "IN AUTO",
-      options: [
-        { name: "Autostrada A35 (BreBeMi) / A21", detail: "Uscita Crema o Lodi, proseguire verso Ripalta Guerina" }
-      ],
-      note: "Un ampio parcheggio privato custodito sarà riservato a tutti i nostri ospiti direttamente all'interno della villa."
-    },
-    {
-      icon: "Bus",
-      title: "TRASFERIMENTI",
-      options: [
-        { name: "Servizio Navetta", detail: "Disponibile tra gli hotel convenzionati e Villa Toscanini" }
-      ],
-      note: "Per rendere più semplice il vostro arrivo, sarà disponibile un servizio navetta dedicato sia prima della cerimonia sia a fine serata."
-    }
-  ] as TravelInfo[],
+  travelMapHeading: "Indicazioni stradali",
+  travelMapTitle: "Mappa per raggiungere Villa Toscanini",
+  travelMapUrl: "https://www.google.com/maps/d/u/0/embed?mid=101atbBFkOqip71Pl8XhXE1idU0ctEoc&ehbc=2E312F",
+  travelMapImage: "/images/maptovilla.webp",
+  travelMapImageAlt: `Mappa illustrata del percorso da Lodi a ${locationName}`,
+  travelMapOpen: "Mostra la mappa interattiva",
+  travelMapHintTouch: "Tocca per la mappa interattiva",
+  travelMapHintHover: "Passa sopra per la mappa interattiva",
+  travelMapBack: "Torna alla mappa illustrata",
 
   dressCodeLabel: "DRESS CODE",
   dressCodeHeading: "Elegante, con un tocco primaverile",
@@ -220,8 +192,6 @@ export const weddingData = {
   registryIban: "IT99 A 0123 4567 8901 2345 6789 012",
   registryBeneficiary: coupleBranding,
   registryBank: "Banca Intesa Sanpaolo",
-
-  accommodationCta: "Scopri l'hotel",
 
   rsvp: {
     label: "RSVP",

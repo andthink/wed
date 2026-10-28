@@ -11,7 +11,7 @@ export const faqData = {
     {
       id: "faq-1",
       question: "A che ora è consigliato arrivare?",
-      answer: "Vi consigliamo di arrivare circa 30 minuti prima dell'inizio della cerimonia (ore 15:30) per accomodarvi con calma nei giardini di Villa Toscanini e godervi l'aperitivo di benvenuto."
+      answer: "Vi consigliamo di arrivare circa 30 minuti prima dell'inizio della cerimonia (ore 17:00) per accomodarvi con calma nei giardini di Villa Toscanini e godervi l'aperitivo di benvenuto."
     },
     {
       id: "faq-2",
