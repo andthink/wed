@@ -50,7 +50,7 @@ export const Wedding: React.FC = () => {
         {/* CTA */}
         <div className="flex justify-center mt-8">
           <Button asAnchor href="#location" variant="outline" size="lg">
-            Scopri la location
+            {weddingData.weddingCta}
           </Button>
         </div>
       </div>

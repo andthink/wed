@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center space-y-8">
         {/* Monogram Logo */}
         <span className="font-serif text-3xl tracking-widest text-[#292724]">
-          F &amp; A
+          {weddingData.monogram}
         </span>
 
         {/* Couple & Details */}
@@ -23,21 +23,21 @@ export const Footer: React.FC = () => {
         {/* Navigation Links */}
         <nav className="flex flex-wrap justify-center gap-6 sm:gap-8 text-xs uppercase tracking-[0.2em] text-[#8F8578]">
           <a href="#rsvp" className="hover:text-[#292724] transition-colors">
-            RSVP
+            {weddingData.nav.rsvp}
           </a>
           <a href="#location" className="hover:text-[#292724] transition-colors">
-            Location
+            {weddingData.nav.location}
           </a>
           <a href="#story" className="hover:text-[#292724] transition-colors">
-            La nostra storia
+            {weddingData.nav.story}
           </a>
           <a
-            href="https://instagram.com"
+            href={weddingData.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#292724] transition-colors"
           >
-            Instagram
+            {weddingData.nav.instagram}
           </a>
         </nav>
 

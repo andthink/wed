@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
+import { weddingData } from "@/data/wedding";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -16,16 +17,14 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Francesca & Andrea — 20 maggio 2027",
-  description:
-    "Francesca e Andrea vi invitano a celebrare con loro il giorno del loro matrimonio a Villa Toscanini, Ripalta Guerina.",
+  title: weddingData.meta.title,
+  description: weddingData.meta.description,
   openGraph: {
-    title: "Francesca & Andrea — Matrimonio a Villa Toscanini",
-    description:
-      "Francesca e Andrea vi invitano a celebrare con loro il giorno del loro matrimonio a Villa Toscanini (Ripalta Guerina) il 16 maggio 2027.",
+    title: weddingData.meta.ogTitle,
+    description: weddingData.meta.ogDescription,
     locale: "it_IT",
     type: "website",
-    siteName: "Francesca & Andrea Wedding",
+    siteName: weddingData.meta.siteName,
   },
   robots: {
     index: true,

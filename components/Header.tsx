@@ -7,11 +7,11 @@ import { MobileMenu } from "./MobileMenu";
 import { weddingData } from "@/data/wedding";
 
 const NAV_LINKS = [
-  { href: "#story", label: "La nostra storia" },
-  { href: "#wedding", label: "Il matrimonio" },
-  { href: "#schedule", label: "Programma" },
-  { href: "#location", label: "Location" },
-  { href: "#rsvp", label: "RSVP" },
+  { href: "#story", label: weddingData.nav.story },
+  { href: "#wedding", label: weddingData.nav.wedding },
+  { href: "#schedule", label: weddingData.nav.schedule },
+  { href: "#location", label: weddingData.nav.location },
+  { href: "#rsvp", label: weddingData.nav.rsvp },
 ];
 
 export const Header: React.FC = () => {
@@ -74,7 +74,7 @@ export const Header: React.FC = () => {
               isScrolled ? "text-[#292724]" : "text-white drop-shadow-sm"
             }`}
           >
-            F & A
+            {weddingData.monogram}
           </a>
 
           {/* Desktop Navigation */}
@@ -124,7 +124,7 @@ export const Header: React.FC = () => {
           {/* Mobile Hamburger Trigger */}
           <button
             onClick={() => setMobileMenuOpen(true)}
-            aria-label="Apri menu"
+            aria-label={weddingData.a11y.openMenu}
             className={`md:hidden p-2 transition-colors focus:outline-none ${
               isScrolled ? "text-[#292724]" : "text-white"
             }`}

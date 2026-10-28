@@ -88,7 +88,7 @@ export const EnvelopeIntro: React.FC = () => {
       data-phase={phase}
       role="dialog"
       aria-modal="true"
-      aria-label={`Invito al matrimonio di ${weddingData.coupleProse}`}
+      aria-label={weddingData.a11y.invitationDialog}
     >
       {/* Background */}
       <div className="intro__bg absolute inset-0">
@@ -130,7 +130,7 @@ export const EnvelopeIntro: React.FC = () => {
                   {weddingData.heroLabel}
                 </span>
                 <span className="intro__card-names font-serif font-light text-[#292724] leading-tight mt-[2%]">
-                  Francesca <span className="italic text-[#C8B79C]">&amp;</span> Andrea
+                  {weddingData.brideName} <span className="italic text-[#C8B79C]">&amp;</span> {weddingData.groomName}
                 </span>
                 <span className="intro__card-small uppercase tracking-[0.25em] text-[#292724] mt-[2%]">
                   {weddingData.dateFormatted}
@@ -171,7 +171,7 @@ export const EnvelopeIntro: React.FC = () => {
             type="button"
             onClick={open}
             disabled={phase !== "closed"}
-            aria-label="Apri l'invito"
+            aria-label={weddingData.a11y.openInvitation}
             className="intro__seal absolute z-40 aspect-square rounded-full cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C8B79C]"
           >
             <Image src={seal} alt="" fill priority sizes="120px" className="object-contain drop-shadow-md" />
@@ -184,7 +184,7 @@ export const EnvelopeIntro: React.FC = () => {
             aria-hidden="true"
             className="intro__label absolute z-40 font-serif italic text-[#5E564C] whitespace-nowrap cursor-pointer hover:text-[#292724]"
           >
-            Apri l&apos;invito
+            {weddingData.envelopeOpen}
           </button>
         </div>
       </div>
@@ -195,7 +195,7 @@ export const EnvelopeIntro: React.FC = () => {
         onClick={leave}
         className="intro__skip absolute bottom-6 right-6 z-50 px-4 py-2 text-[10px] uppercase tracking-[0.3em] text-white/90 bg-[#292724]/30 backdrop-blur-sm border border-white/30 hover:bg-[#292724]/50 cursor-pointer"
       >
-        Salta
+        {weddingData.envelopeSkip}
       </button>
     </div>
   );

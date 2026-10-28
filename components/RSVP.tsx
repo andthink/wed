@@ -43,17 +43,17 @@ export const RSVP: React.FC = () => {
     const newErrors: FormErrors = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = "Inserisci il tuo nome e cognome.";
+      newErrors.name = weddingData.rsvp.errors.name;
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = "Inserisci un indirizzo email valido.";
+      newErrors.email = weddingData.rsvp.errors.email;
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Inserisci un indirizzo email valido.";
+      newErrors.email = weddingData.rsvp.errors.email;
     }
 
     if (!formData.attending) {
-      newErrors.attending = "Indica se parteciperai.";
+      newErrors.attending = weddingData.rsvp.errors.attending;
     }
 
     setErrors(newErrors);
@@ -91,9 +91,9 @@ export const RSVP: React.FC = () => {
     <section id="rsvp" className="py-24 md:py-36 px-6 bg-[#F7F2E9]">
       <div className="max-w-3xl mx-auto">
         <SectionHeading
-          label="RSVP"
-          title="Ci sarete?"
-          subtitle="La vostra presenza renderà questo giorno ancora più speciale."
+          label={weddingData.rsvp.label}
+          title={weddingData.rsvp.heading}
+          subtitle={weddingData.rsvp.subtitle}
         />
 
         {isSubmitted ? (
@@ -104,15 +104,15 @@ export const RSVP: React.FC = () => {
             </div>
 
             <span className="text-xs uppercase tracking-[0.25em] text-[#8F8578] font-medium mb-2">
-              CONFERMA RICEVUTA
+              {weddingData.rsvp.successLabel}
             </span>
 
             <h3 className="font-serif text-3xl sm:text-4xl text-[#292724] font-light mb-4">
-              Grazie, {formData.name}
+              {weddingData.rsvp.successThanks}, {formData.name}
             </h3>
 
             <p className="font-serif italic text-lg sm:text-xl text-[#8F8578] font-light max-w-md mb-8">
-              &ldquo;Non vediamo l'ora di festeggiare insieme a voi.&rdquo;
+              &ldquo;{weddingData.finalMessageText}&rdquo;
             </p>
 
             <div className="pt-6 border-t border-[#E8E0D4] w-48 flex flex-col items-center">
@@ -140,7 +140,7 @@ export const RSVP: React.FC = () => {
               }}
               className="mt-8 text-xs uppercase tracking-widest text-[#8F8578] hover:text-[#292724] underline underline-offset-4 cursor-pointer"
             >
-              Invia un'altra conferma
+              {weddingData.rsvp.sendAnother}
             </button>
           </div>
         ) : (
@@ -156,7 +156,7 @@ export const RSVP: React.FC = () => {
                 htmlFor="name"
                 className="block text-xs uppercase tracking-[0.2em] font-medium text-[#292724] mb-2"
               >
-                Nome e cognome *
+                {weddingData.rsvp.nameLabel}
               </label>
               <input
                 type="text"
@@ -165,7 +165,7 @@ export const RSVP: React.FC = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                placeholder="Mario Rossi"
+                placeholder={weddingData.rsvp.namePlaceholder}
                 className={`w-full px-4 py-3.5 bg-[#FAF8F3] border ${
                   errors.name ? "border-red-500" : "border-[#E8E0D4]"
                 } text-[#292724] placeholder-[#8F8578]/50 text-sm focus:outline-none focus:border-[#C8B79C] transition-colors`}
@@ -183,7 +183,7 @@ export const RSVP: React.FC = () => {
                 htmlFor="email"
                 className="block text-xs uppercase tracking-[0.2em] font-medium text-[#292724] mb-2"
               >
-                Email *
+                {weddingData.rsvp.emailLabel}
               </label>
               <input
                 type="email"
@@ -192,7 +192,7 @@ export const RSVP: React.FC = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                placeholder="mario.rossi@example.com"
+                placeholder={weddingData.rsvp.emailPlaceholder}
                 className={`w-full px-4 py-3.5 bg-[#FAF8F3] border ${
                   errors.email ? "border-red-500" : "border-[#E8E0D4]"
                 } text-[#292724] placeholder-[#8F8578]/50 text-sm focus:outline-none focus:border-[#C8B79C] transition-colors`}
@@ -207,7 +207,7 @@ export const RSVP: React.FC = () => {
             {/* Parteciperete Radio */}
             <div>
               <span className="block text-xs uppercase tracking-[0.2em] font-medium text-[#292724] mb-3">
-                Parteciperete? *
+                {weddingData.rsvp.attendingLabel}
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <label
@@ -228,7 +228,7 @@ export const RSVP: React.FC = () => {
                     className="w-4 h-4 text-[#C8B79C] accent-[#C8B79C] focus:ring-0"
                   />
                   <span className="ml-3 text-sm text-[#292724] font-medium">
-                    Sì, con grande piacere
+                    {weddingData.rsvp.attendingYes}
                   </span>
                 </label>
 
@@ -250,7 +250,7 @@ export const RSVP: React.FC = () => {
                     className="w-4 h-4 text-[#C8B79C] accent-[#C8B79C] focus:ring-0"
                   />
                   <span className="ml-3 text-sm text-[#292724]">
-                    Ci dispiace, non potremo esserci
+                    {weddingData.rsvp.attendingNo}
                   </span>
                 </label>
               </div>
@@ -270,7 +270,7 @@ export const RSVP: React.FC = () => {
                     htmlFor="guestCount"
                     className="block text-xs uppercase tracking-[0.2em] font-medium text-[#292724] mb-2"
                   >
-                    Numero di invitati (incluso te)
+                    {weddingData.rsvp.guestCountLabel}
                   </label>
                   <select
                     id="guestCount"
@@ -283,10 +283,11 @@ export const RSVP: React.FC = () => {
                     }
                     className="w-full px-4 py-3.5 bg-[#FAF8F3] border border-[#E8E0D4] text-[#292724] text-sm focus:outline-none focus:border-[#C8B79C]"
                   >
-                    <option value={1}>1 persona</option>
-                    <option value={2}>2 persone</option>
-                    <option value={3}>3 persone</option>
-                    <option value={4}>4 persone</option>
+                    {weddingData.rsvp.guestCountOptions.map((option, i) => (
+                      <option key={option} value={i + 1}>
+                        {option}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
@@ -296,7 +297,7 @@ export const RSVP: React.FC = () => {
                     htmlFor="dietary"
                     className="block text-xs uppercase tracking-[0.2em] font-medium text-[#292724] mb-2"
                   >
-                    Intolleranze o esigenze alimentari
+                    {weddingData.rsvp.dietaryLabel}
                   </label>
                   <textarea
                     id="dietary"
@@ -305,7 +306,7 @@ export const RSVP: React.FC = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, dietary: e.target.value })
                     }
-                    placeholder="Es. vegetariano, vegano, senza glutine..."
+                    placeholder={weddingData.rsvp.dietaryPlaceholder}
                     className="w-full px-4 py-3.5 bg-[#FAF8F3] border border-[#E8E0D4] text-[#292724] placeholder-[#8F8578]/50 text-sm focus:outline-none focus:border-[#C8B79C]"
                   />
                 </div>
@@ -316,7 +317,7 @@ export const RSVP: React.FC = () => {
                     htmlFor="allergies"
                     className="block text-xs uppercase tracking-[0.2em] font-medium text-[#292724] mb-2"
                   >
-                    Allergie
+                    {weddingData.rsvp.allergiesLabel}
                   </label>
                   <textarea
                     id="allergies"
@@ -325,7 +326,7 @@ export const RSVP: React.FC = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, allergies: e.target.value })
                     }
-                    placeholder="Segnala eventuali allergie alimentari..."
+                    placeholder={weddingData.rsvp.allergiesPlaceholder}
                     className="w-full px-4 py-3.5 bg-[#FAF8F3] border border-[#E8E0D4] text-[#292724] placeholder-[#8F8578]/50 text-sm focus:outline-none focus:border-[#C8B79C]"
                   />
                 </div>
@@ -336,7 +337,7 @@ export const RSVP: React.FC = () => {
                     htmlFor="favoriteSong"
                     className="block text-xs uppercase tracking-[0.2em] font-medium text-[#292724] mb-2"
                   >
-                    La vostra canzone del cuore
+                    {weddingData.rsvp.songLabel}
                   </label>
                   <input
                     type="text"
@@ -345,7 +346,7 @@ export const RSVP: React.FC = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, favoriteSong: e.target.value })
                     }
-                    placeholder="Titolo ed artista per la playlist della festa..."
+                    placeholder={weddingData.rsvp.songPlaceholder}
                     className="w-full px-4 py-3.5 bg-[#FAF8F3] border border-[#E8E0D4] text-[#292724] placeholder-[#8F8578]/50 text-sm focus:outline-none focus:border-[#C8B79C]"
                   />
                 </div>
@@ -356,7 +357,7 @@ export const RSVP: React.FC = () => {
                     htmlFor="message"
                     className="block text-xs uppercase tracking-[0.2em] font-medium text-[#292724] mb-2"
                   >
-                    Un messaggio per gli sposi
+                    {weddingData.rsvp.messageLabel}
                   </label>
                   <textarea
                     id="message"
@@ -365,7 +366,7 @@ export const RSVP: React.FC = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, message: e.target.value })
                     }
-                    placeholder="Lascia un pensiero personale a Francesca e Andrea..."
+                    placeholder={weddingData.rsvp.messagePlaceholder}
                     className="w-full px-4 py-3.5 bg-[#FAF8F3] border border-[#E8E0D4] text-[#292724] placeholder-[#8F8578]/50 text-sm focus:outline-none focus:border-[#C8B79C]"
                   />
                 </div>
@@ -384,10 +385,10 @@ export const RSVP: React.FC = () => {
                 {isSubmitting ? (
                   <span className="flex items-center">
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Invio in corso...
+                    {weddingData.rsvp.submitting}
                   </span>
                 ) : (
-                  "Conferma la presenza"
+                  weddingData.rsvp.submit
                 )}
               </Button>
             </div>

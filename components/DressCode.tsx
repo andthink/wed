@@ -18,25 +18,25 @@ export const DressCode: React.FC = () => {
           <div className="space-y-8">
             <div className="p-8 bg-[#FFFEFC] border border-[#E8E0D4] space-y-4">
               <span className="text-xs uppercase tracking-[0.25em] font-medium text-[#C8B79C] block">
-                PER LEI
+                {weddingData.dressCodeHersLabel}
               </span>
               <p className="font-serif text-xl text-[#292724] font-light">
                 {weddingData.dressCodeHers}
               </p>
               <p className="text-xs text-[#8F8578] font-light">
-                Toni pastello, abiti lunghi o midi, tessuti leggeri adatti ad una giornata estiva.
+                {weddingData.dressCodeHersDetail}
               </p>
             </div>
 
             <div className="p-8 bg-[#FFFEFC] border border-[#E8E0D4] space-y-4">
               <span className="text-xs uppercase tracking-[0.25em] font-medium text-[#C8B79C] block">
-                PER LUI
+                {weddingData.dressCodeHisLabel}
               </span>
               <p className="font-serif text-xl text-[#292724] font-light">
                 {weddingData.dressCodeHis}
               </p>
               <p className="text-xs text-[#8F8578] font-light">
-                Completo elegante in lino o fresco lana, giacca e cravatta / papillon opzionale.
+                {weddingData.dressCodeHisDetail}
               </p>
             </div>
 
@@ -50,7 +50,7 @@ export const DressCode: React.FC = () => {
             <div className="relative aspect-[3/4] w-full overflow-hidden rounded-sm border border-[#E8E0D4]">
               <Image
                 src="https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=800&q=85"
-                alt="Aesthetic detail"
+                alt={weddingData.images.dressCodeDetail}
                 fill
                 className="object-cover transition-transform duration-700 hover:scale-105"
               />
@@ -58,7 +58,7 @@ export const DressCode: React.FC = () => {
             <div className="relative aspect-[3/4] w-full overflow-hidden rounded-sm border border-[#E8E0D4] mt-8">
               <Image
                 src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=85"
-                alt="Aesthetic style"
+                alt={weddingData.images.dressCodeStyle}
                 fill
                 className="object-cover transition-transform duration-700 hover:scale-105"
               />

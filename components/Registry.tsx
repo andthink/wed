@@ -33,7 +33,7 @@ export const Registry: React.FC = () => {
             className="mt-4"
           >
             <Gift className="w-4 h-4 mr-2 stroke-[1.5]" />
-            Scopri la lista nozze
+            {weddingData.registryCta}
           </Button>
         </div>
       </section>
@@ -43,7 +43,7 @@ export const Registry: React.FC = () => {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Dettagli Lista Nozze"
+          aria-label={weddingData.a11y.registryDialog}
           className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-[#292724]/60 backdrop-blur-xs animate-fade-in"
           onClick={() => setModalOpen(false)}
         >
@@ -53,28 +53,28 @@ export const Registry: React.FC = () => {
           >
             <button
               onClick={() => setModalOpen(false)}
-              aria-label="Chiudi"
+              aria-label={weddingData.a11y.close}
               className="absolute top-4 right-4 p-2 text-[#8F8578] hover:text-[#292724] transition-colors"
             >
               <X className="w-5 h-5 stroke-[1.5]" />
             </button>
 
             <span className="text-xs uppercase tracking-[0.25em] text-[#C8B79C] font-medium block mb-2">
-              LISTA NOZZE
+              {weddingData.registryModalLabel}
             </span>
 
             <h3 className="font-serif text-2xl sm:text-3xl text-[#292724] font-light mb-4">
-              Un pensiero per noi
+              {weddingData.registryModalHeading}
             </h3>
 
             <p className="text-sm text-[#8F8578] font-light leading-relaxed mb-6">
-              Il regalo più grande per noi è festeggiare insieme a voi. Se desiderate contribuire al nostro viaggio di nozze, potete utilizzare i seguenti estremi bancari:
+              {weddingData.registryModalText}
             </p>
 
             <div className="bg-[#FAF8F3] p-5 border border-[#E8E0D4] rounded-sm space-y-3 mb-6 text-left">
               <div>
                 <span className="text-[10px] uppercase tracking-widest text-[#8F8578] block">
-                  Intestatario
+                  {weddingData.registryBeneficiaryLabel}
                 </span>
                 <span className="font-serif text-base text-[#292724] font-medium">
                   {weddingData.registryBeneficiary}
@@ -83,7 +83,7 @@ export const Registry: React.FC = () => {
 
               <div>
                 <span className="text-[10px] uppercase tracking-widest text-[#8F8578] block">
-                  Banca
+                  {weddingData.registryBankLabel}
                 </span>
                 <span className="text-xs text-[#292724]">
                   {weddingData.registryBank}
@@ -92,7 +92,7 @@ export const Registry: React.FC = () => {
 
               <div>
                 <span className="text-[10px] uppercase tracking-widest text-[#8F8578] block">
-                  IBAN
+                  {weddingData.registryIbanLabel}
                 </span>
                 <div className="flex items-center justify-between mt-1">
                   <code className="text-xs sm:text-sm font-mono text-[#292724] bg-white px-2 py-1 border border-[#E8E0D4] select-all">
@@ -105,12 +105,12 @@ export const Registry: React.FC = () => {
                     {copied ? (
                       <>
                         <Check className="w-4 h-4 text-green-600" />
-                        <span className="text-green-600 font-medium">Copiato!</span>
+                        <span className="text-green-600 font-medium">{weddingData.registryCopied}</span>
                       </>
                     ) : (
                       <>
                         <Copy className="w-4 h-4" />
-                        <span>Copia</span>
+                        <span>{weddingData.registryCopy}</span>
                       </>
                     )}
                   </button>
@@ -125,7 +125,7 @@ export const Registry: React.FC = () => {
                 size="sm"
                 className="w-full"
               >
-                Chiudi
+                {weddingData.registryClose}
               </Button>
             </div>
           </div>

@@ -8,10 +8,10 @@ import { weddingData } from "@/data/wedding";
 export const Hero: React.FC = () => {
   return (
     <section className="relative w-full h-screen min-h-[650px] flex items-center justify-center overflow-hidden">
-      {/* Background Lake Como Image */}
+      {/* Background Image */}
       <Image
         src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2000&q=90"
-        alt="Lago di Como"
+        alt={weddingData.images.hero}
         fill
         priority
         className="object-cover object-center scale-105 transition-transform duration-1000"
@@ -30,13 +30,13 @@ export const Hero: React.FC = () => {
         {/* Main Names Typography */}
         <div className="flex flex-col items-center font-serif font-light tracking-wide leading-tight my-2">
           <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white font-light drop-shadow-sm">
-            Francesca
+            {weddingData.brideName}
           </h1>
           <span className="font-serif italic text-3xl sm:text-5xl md:text-6xl text-[#C8B79C] my-1 md:my-2">
             &amp;
           </span>
           <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white font-light drop-shadow-sm">
-            Andrea
+            {weddingData.groomName}
           </h1>
         </div>
 

@@ -19,7 +19,7 @@ export const Story: React.FC = () => {
             <div className="relative aspect-[3/4] w-full rounded-sm overflow-hidden shadow-lg border border-[#E8E0D4]">
               <Image
                 src="/images/moher.png"
-                alt="Francesca e Andrea"
+                alt={weddingData.images.story}
                 fill
                 sizes="(max-width: 1023px) calc(100vw - 48px), (max-width: 1327px) calc(41.667vw - 57.333px), 496px"
                 className="object-cover transition-transform duration-700 hover:scale-105"
@@ -37,14 +37,14 @@ export const Story: React.FC = () => {
                 &ldquo;{weddingData.storyText}&rdquo;
               </p>
               <p className="text-base text-[#292724]/80">
-                Tra passeggiate sulle sponde del lago, tramonti condivisi e sogni coltivati giorno dopo giorno, abbiamo scoperto che la felicità sta nel viaggiare insieme nella stessa direzione.
+                {weddingData.storyTextSecondary}
               </p>
             </div>
 
             {/* Timeline */}
             <div className="pt-8 border-t border-[#E8E0D4]">
               <h3 className="text-xs uppercase tracking-[0.25em] text-[#8F8578] font-medium mb-8">
-                IL NOSTRO PERCORSO
+                {weddingData.storyTimelineLabel}
               </h3>
 
               <div className="relative pl-6 space-y-8 border-l border-[#C8B79C]/40">

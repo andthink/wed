@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { GalleryImage } from "@/data/gallery";
+import { weddingData } from "@/data/wedding";
 
 interface LightboxProps {
   images: GalleryImage[];
@@ -54,7 +55,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
     <div
       role="dialog"
       aria-modal="true"
-      aria-label="Galleria immagini a schermo intero"
+      aria-label={weddingData.a11y.lightbox}
       className="fixed inset-0 z-50 flex items-center justify-center bg-[#292724]/95 backdrop-blur-md animate-fade-in p-4 sm:p-8"
       onClick={onClose}
     >
@@ -66,7 +67,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
 
         <button
           onClick={onClose}
-          aria-label="Chiudi lightbox"
+          aria-label={weddingData.a11y.closeLightbox}
           className="p-2 text-white/80 hover:text-white transition-colors focus:outline-none cursor-pointer"
         >
           <X className="w-6 h-6 stroke-[1.5]" />
@@ -79,7 +80,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
           e.stopPropagation();
           onNavigate((currentIndex - 1 + images.length) % images.length);
         }}
-        aria-label="Immagine precedente"
+        aria-label={weddingData.a11y.previousImage}
         className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-10 p-3 text-white/70 hover:text-white transition-colors bg-black/20 hover:bg-black/40 rounded-full focus:outline-none cursor-pointer"
       >
         <ChevronLeft className="w-6 h-6 stroke-[1.5]" />
@@ -116,7 +117,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
           e.stopPropagation();
           onNavigate((currentIndex + 1) % images.length);
         }}
-        aria-label="Immagine successiva"
+        aria-label={weddingData.a11y.nextImage}
         className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-10 p-3 text-white/70 hover:text-white transition-colors bg-black/20 hover:bg-black/40 rounded-full focus:outline-none cursor-pointer"
       >
         <ChevronRight className="w-6 h-6 stroke-[1.5]" />

@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Star, MapPin } from "lucide-react";
 import { accommodationData } from "@/data/accommodation";
+import { weddingData } from "@/data/wedding";
 import { SectionHeading } from "./SectionHeading";
 import { Button } from "./Button";
 
@@ -70,7 +71,7 @@ export const Accommodation: React.FC = () => {
                   size="sm"
                   className="w-full"
                 >
-                  Scopri l'hotel
+                  {weddingData.accommodationCta}
                 </Button>
               </div>
             </div>

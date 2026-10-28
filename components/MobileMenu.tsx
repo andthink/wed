@@ -44,17 +44,17 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
     <div
       aria-modal="true"
       role="dialog"
-      aria-label="Menu di navigazione mobile"
+      aria-label={weddingData.a11y.mobileMenu}
       className="fixed inset-0 z-50 flex flex-col bg-[#FAF8F3] text-[#292724] animate-fade-in transition-all duration-300"
     >
       {/* Top Bar */}
       <div className="flex items-center justify-between px-6 py-5 border-b border-[#E8E0D4]">
         <span className="font-serif text-xl tracking-widest text-[#292724]">
-          F & A
+          {weddingData.monogram}
         </span>
         <button
           onClick={onClose}
-          aria-label="Chiudi menu"
+          aria-label={weddingData.a11y.closeMenu}
           className="p-2 text-[#292724] hover:text-[#C8B79C] transition-colors focus:outline-none"
         >
           <X className="w-6 h-6 stroke-[1.5]" />
@@ -94,8 +94,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
       </div>
 
       {/* Footer Branding inside menu */}
-      <div className="py-6 text-center text-xs tracking-widest text-[#8F8578] border-t border-[#E8E0D4]/40">
-        FRANCESCA & ANDREA
+      <div className="py-6 text-center text-xs uppercase tracking-widest text-[#8F8578] border-t border-[#E8E0D4]/40">
+        {weddingData.coupleBranding}
       </div>
     </div>
   );
